@@ -1,0 +1,319 @@
+{{ 'wedding-planner.css' | asset_url | stylesheet_tag }}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+
+<section class="wp-section" data-section-id="{{ section.id }}">
+  <div class="wp-container">
+
+    {%- comment -%} Hero {%- endcomment -%}
+    <header class="wp-hero">
+      <div class="wp-eyebrow">
+        <span class="wp-eyebrow__line" aria-hidden="true"></span>
+        <span class="wp-eyebrow__text">{{ section.settings.eyebrow }}</span>
+        <span class="wp-eyebrow__line" aria-hidden="true"></span>
+      </div>
+      <h1 class="wp-hero__title">{{ section.settings.title }}</h1>
+      <p class="wp-hero__lead">{{ section.settings.lead }}</p>
+    </header>
+
+    {%- comment -%} Event card {%- endcomment -%}
+    <article class="wp-event">
+      <div class="wp-event__main">
+        <p class="wp-event__label">The wedding of</p>
+        <h2 class="wp-event__names">
+          <span>{{ section.settings.name_one }}</span>
+          <span class="wp-event__amp">&amp;</span>
+          <span>{{ section.settings.name_two }}</span>
+        </h2>
+        <p class="wp-event__meta">
+          <span>{{ section.settings.event_date }}</span>
+          <span class="wp-event__dot" aria-hidden="true">·</span>
+          <span>{{ section.settings.event_location }}</span>
+        </p>
+      </div>
+      <div class="wp-event__actions">
+        <button type="button" class="wp-btn wp-btn--ghost">Edit event</button>
+        <button type="button" class="wp-btn wp-btn--primary">Finalize event</button>
+      </div>
+    </article>
+
+    {%- comment -%} Guests + Looks two-column {%- endcomment -%}
+    <div class="wp-cols">
+
+      <section class="wp-panel">
+        <div class="wp-panel__head">
+          <div class="wp-panel__heading">
+            <span class="wp-panel__numeral" aria-hidden="true">i</span>
+            <h3 class="wp-panel__title">Guests</h3>
+          </div>
+          <button type="button" class="wp-btn wp-btn--outline" data-modal-open="guest" aria-haspopup="dialog">
+            <span>Add guest</span>
+            <span class="wp-btn__plus" aria-hidden="true">+</span>
+          </button>
+        </div>
+        <p class="wp-panel__desc">An event needs at least three guests to qualify for group savings. Keep an eye on each guest's progress as they shop.</p>
+        <div class="wp-panel__body wp-empty">
+          <p class="wp-empty__text">No guests yet — start by adding the first member of your party.</p>
+        </div>
+      </section>
+
+      <section class="wp-panel">
+        <div class="wp-panel__head">
+          <div class="wp-panel__heading">
+            <span class="wp-panel__numeral" aria-hidden="true">ii</span>
+            <h3 class="wp-panel__title">Looks</h3>
+          </div>
+          <button type="button" class="wp-btn wp-btn--outline" data-modal-open="look" aria-haspopup="dialog">
+            <span>Add look</span>
+            <span class="wp-btn__plus" aria-hidden="true">+</span>
+          </button>
+        </div>
+        <p class="wp-panel__desc">Build outfits for your wedding party. Once a look is created, you can assign it to one or more guests.</p>
+        <div class="wp-panel__body wp-empty">
+          <p class="wp-empty__text">No looks yet — add one to start outfitting your party.</p>
+        </div>
+      </section>
+
+    </div>
+
+    {%- comment -%} Bundle promotions {%- endcomment -%}
+    <section class="wp-bundles">
+      <div class="wp-bundles__head">
+        <div class="wp-eyebrow">
+          <span class="wp-eyebrow__line" aria-hidden="true"></span>
+          <span class="wp-eyebrow__text">Bundle savings</span>
+          <span class="wp-eyebrow__line" aria-hidden="true"></span>
+        </div>
+        <h3 class="wp-bundles__title">Choose your bundle</h3>
+        <p class="wp-bundles__lead">Add the matching pieces to a Look — we'll apply the best bundle price automatically.</p>
+      </div>
+
+      <div class="wp-bundles__grid">
+
+        <article class="wp-bundle">
+          <p class="wp-bundle__from">From</p>
+          <p class="wp-bundle__price">$199</p>
+          <p class="wp-bundle__save">Save $75</p>
+          <ul class="wp-bundle__list">
+            <li>Suit pants</li>
+            <li>Vest</li>
+            <li>Dress shirt</li>
+            <li>Tie</li>
+          </ul>
+          <button type="button" class="wp-btn wp-btn--outline wp-btn--full">Choose bundle</button>
+        </article>
+
+        <article class="wp-bundle wp-bundle--featured">
+          <div class="wp-bundle__flag">Most popular</div>
+          <p class="wp-bundle__from">From</p>
+          <p class="wp-bundle__price">$349</p>
+          <p class="wp-bundle__save">Save $130</p>
+          <ul class="wp-bundle__list">
+            <li>Suit jacket</li>
+            <li>Suit pants</li>
+            <li>Vest</li>
+            <li>Dress shirt</li>
+            <li>Tie</li>
+            <li>Pocket square</li>
+          </ul>
+          <button type="button" class="wp-btn wp-btn--cream wp-btn--full">Choose bundle</button>
+        </article>
+
+        <article class="wp-bundle">
+          <p class="wp-bundle__from">From</p>
+          <p class="wp-bundle__price">$299</p>
+          <p class="wp-bundle__save">Save $80</p>
+          <ul class="wp-bundle__list">
+            <li>Suit jacket</li>
+            <li>Suit pants</li>
+            <li>Dress shirt</li>
+            <li>Tie</li>
+            <li>Pocket square</li>
+          </ul>
+          <button type="button" class="wp-btn wp-btn--outline wp-btn--full">Choose bundle</button>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+
+  {%- comment -%} Add Guest modal {%- endcomment -%}
+  <div class="wp-modal" data-modal="guest" hidden>
+    <div class="wp-modal__backdrop" data-modal-close></div>
+    <div class="wp-modal__panel" role="dialog" aria-labelledby="wp-modal-guest-title" aria-modal="true">
+      <button type="button" class="wp-modal__close" data-modal-close aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M1 1l12 12M13 1L1 13"/>
+        </svg>
+      </button>
+      <p class="wp-modal__eyebrow">New guest</p>
+      <h2 id="wp-modal-guest-title" class="wp-modal__title">Add a guest to your party</h2>
+      <p class="wp-modal__sub">They'll receive a personalized link with their assigned look once you finalize the event.</p>
+
+      <form class="wp-form" onsubmit="event.preventDefault();">
+        <div class="wp-field-row">
+          <label class="wp-field">
+            <span class="wp-field__label">First name</span>
+            <input type="text" class="wp-field__input" placeholder="First name">
+          </label>
+          <label class="wp-field">
+            <span class="wp-field__label">Last name</span>
+            <input type="text" class="wp-field__input" placeholder="Last name">
+          </label>
+        </div>
+
+        <label class="wp-field">
+          <span class="wp-field__label">Email address</span>
+          <input type="email" class="wp-field__input" placeholder="guest@email.com">
+        </label>
+
+        <label class="wp-field">
+          <span class="wp-field__label">Phone number <span class="wp-field__opt">— optional</span></span>
+          <input type="tel" class="wp-field__input" placeholder="(555) 555-5555">
+        </label>
+
+        <label class="wp-field">
+          <span class="wp-field__label">Role in the wedding</span>
+          <select class="wp-field__input">
+            <option>Bride</option>
+            <option>Groom</option>
+            <option>Celebrant</option>
+            <option selected>Party member</option>
+            <option>Wedding planner</option>
+          </select>
+        </label>
+
+        <fieldset class="wp-field">
+          <legend class="wp-field__label">Send their emails in</legend>
+          <div class="wp-radios">
+            <label class="wp-radio">
+              <input type="radio" name="lang" checked>
+              <span>English</span>
+            </label>
+            <label class="wp-radio">
+              <input type="radio" name="lang">
+              <span>French</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="wp-field">
+          <legend class="wp-field__label">Who's buying their outfit?</legend>
+          <div class="wp-radios wp-radios--stack">
+            <label class="wp-radio">
+              <input type="radio" name="payer" checked>
+              <span>They're buying it themselves</span>
+            </label>
+            <label class="wp-radio">
+              <input type="radio" name="payer">
+              <span>I'm buying it for them</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="wp-modal__actions">
+          <button type="button" class="wp-btn wp-btn--ghost" data-modal-close>Cancel</button>
+          <button type="submit" class="wp-btn wp-btn--primary">Add guest</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {%- comment -%} Add Look modal {%- endcomment -%}
+  <div class="wp-modal" data-modal="look" hidden>
+    <div class="wp-modal__backdrop" data-modal-close></div>
+    <div class="wp-modal__panel" role="dialog" aria-labelledby="wp-modal-look-title" aria-modal="true">
+      <button type="button" class="wp-modal__close" data-modal-close aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M1 1l12 12M13 1L1 13"/>
+        </svg>
+      </button>
+      <p class="wp-modal__eyebrow">New look</p>
+      <h2 id="wp-modal-look-title" class="wp-modal__title">Create a look</h2>
+      <p class="wp-modal__sub">Give it a name to start. You can add pieces and assign guests after.</p>
+
+      <form class="wp-form" onsubmit="event.preventDefault();">
+        <label class="wp-field">
+          <span class="wp-field__label">Look name</span>
+          <input type="text" class="wp-field__input" placeholder='e.g. "Groom" or "Groomsmen"'>
+        </label>
+
+        <div class="wp-modal__actions">
+          <button type="button" class="wp-btn wp-btn--ghost" data-modal-close>Cancel</button>
+          <button type="submit" class="wp-btn wp-btn--primary">Create look</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>
+
+<script src="{{ 'wedding-planner.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Wedding planner",
+  "tag": "section",
+  "class": "section-wedding-planner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Wedding coordinator"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Coordinate every look. Save together."
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Lead paragraph",
+      "default": "Plan your wedding party in three considered steps. Add the people, build the outfits, send everyone their personalized list."
+    },
+    {
+      "type": "header",
+      "content": "Event"
+    },
+    {
+      "type": "text",
+      "id": "name_one",
+      "label": "First name",
+      "default": "Sarah Mitchell"
+    },
+    {
+      "type": "text",
+      "id": "name_two",
+      "label": "Second name",
+      "default": "James Chen"
+    },
+    {
+      "type": "text",
+      "id": "event_date",
+      "label": "Date",
+      "default": "June 15, 2026"
+    },
+    {
+      "type": "text",
+      "id": "event_location",
+      "label": "Location",
+      "default": "Toronto, Ontario"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wedding planner"
+    }
+  ]
+}
+{% endschema %}
